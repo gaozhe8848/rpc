@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  rabbitmq:
+    image: rabbitmq:latest # Use the latest version of RabbitMQ, includes management by default
+    ports:
+      - 5672:5672 # Standard RabbitMQ port
+      - 8080:8080 # Management UI port (accessible at http://localhost:8080)
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest # Set a custom username
+      - RABBITMQ_DEFAULT_PASS=guest # Set a custom password
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq # Persist data across restarts
+    networks:
+      - my_network # Add to the network
+
+networks:
+  my_network: # Define the network
+    driver: bridge
+
+volumes:
+  rabbitmq_data: # Declare the volume
