@@ -1,10 +1,10 @@
 version: '3.8'
 services:
   rabbitmq:
-    image: rabbitmq:latest # Use the latest version of RabbitMQ, includes management by default
+    image: rabbitmq:4.0-management # Use the latest version of RabbitMQ, includes management by default
     ports:
       - 5672:5672 # Standard RabbitMQ port
-      - 8080:8080 # Management UI port (accessible at http://localhost:8080)
+      - 15672:15672 # Management UI port (accessible at http://localhost:8080)
     environment:
       - RABBITMQ_DEFAULT_USER=guest # Set a custom username
       - RABBITMQ_DEFAULT_PASS=guest # Set a custom password
